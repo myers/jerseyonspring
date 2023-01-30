@@ -1,4 +1,4 @@
-package com.example.wstutorial;
+package com.example.wstutorial.configuration;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
-        register(HelloWorldResource.class);
+        packages("com.example.wstutorial.resource");
+        // register(HelloWorldResource.class);
     }
 }

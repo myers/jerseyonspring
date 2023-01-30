@@ -1,4 +1,4 @@
-package com.example.wstutorial;
+package com.example.wstutorial.entity;
 
 import lombok.Builder;
 import lombok.Data;
