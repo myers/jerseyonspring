@@ -1,10 +1,10 @@
 package com.example.wstutorial.entity;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class Employee {
     private int id;
     private String firstName;

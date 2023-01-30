@@ -1,6 +1,5 @@
 package com.example.wstutorial.resource;
 
-import java.util.Collections;
 import java.util.List;
 
 import com.example.wstutorial.dao.EmployeeDao;

@@ -1,46 +1,32 @@
 package com.example.wstutorial.configuration;
 
-import java.util.Set;
-
+import java.util.List;
 import javax.sql.DataSource;
 
 import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.core.argument.ArgumentFactory;
-import org.jdbi.v3.core.mapper.ColumnMapper;
-import org.jdbi.v3.core.mapper.ColumnMapperFactory;
-import org.jdbi.v3.core.result.ResultProducers;
-import org.jdbi.v3.core.transaction.SerializableTransactionRunner;
+import org.jdbi.v3.core.mapper.RowMapper;
+import org.jdbi.v3.core.spi.JdbiPlugin;
+import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
-import jakarta.inject.Inject;
+import com.example.wstutorial.dao.EmployeeDao;
 
 @Configuration
 public class JdbiConfiguration {
-    private final Jdbi jdbi;
-
-    @Inject
-    public JdbiConfiguration(
-            DataSource dataSource,
-            Set<ArgumentFactory> arguments,
-            Set<ColumnMapper> mappers,
-            Set<ColumnMapperFactory> mapperFactories) {
-        jdbi = Jdbi.create(dataSource);
-
-        // jdbi.installPlugin(new SqlObjectPlugin());
-        // etc
-
-        jdbi.getConfig(ResultProducers.class).allowNoResults(true);
-        jdbi.setTransactionHandler(new SerializableTransactionRunner());
-        // etc
-
-        arguments.forEach(jdbi::registerArgument);
-        mapperFactories.forEach(jdbi::registerColumnMapper);
-        mappers.forEach(jdbi::registerColumnMapper);
+    @Bean
+    public Jdbi jdbi(DataSource ds, List<JdbiPlugin> jdbiPlugins, List<RowMapper<?>> rowMappers) {
+        TransactionAwareDataSourceProxy proxy = new TransactionAwareDataSourceProxy(ds);
+        Jdbi jdbi = Jdbi.create(proxy);
+        jdbi.installPlugin(new SqlObjectPlugin());
+        jdbiPlugins.forEach(plugin -> jdbi.installPlugin(plugin));
+        rowMappers.forEach(mapper -> jdbi.registerRowMapper(mapper));
+        return jdbi;
     }
 
     @Bean
-    public Jdbi jdbi() {
-        return jdbi;
+    public EmployeeDao employeeDao(Jdbi jdbi) {
+        return jdbi.onDemand(EmployeeDao.class);
     }
 }
