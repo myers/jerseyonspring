@@ -43,11 +43,7 @@ public class HelloWorldResource {
             }
 
             session.setAttribute("count", counter);
-            System.out.println(session.getAttribute("count"));
-        } else {
-            System.out.println("no session");
         }
-
         return EmployeeResponse.builder().data(employeeDao.selectAll()).sessionCounter(counter).build();
     }
 }
