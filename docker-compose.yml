@@ -15,10 +15,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: crowdstreet
       MONGO_INITDB_ROOT_PASSWORD: crowdstreet
+      MONGO_INITDB_DATABASE: crowdstreet
     ports:
       - "27017:27017"
     volumes:
       - mongo:/data/db
+      - ./mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
 volumes:
   postgres:
   mongo:
