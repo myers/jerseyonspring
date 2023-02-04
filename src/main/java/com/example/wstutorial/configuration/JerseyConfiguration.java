@@ -15,10 +15,12 @@ public class JerseyConfiguration extends ResourceConfig {
 
         // Allow Jersey work with Spring Security
         // https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.jersey.spring-security
-        setProperties(Collections.singletonMap("jersey.config.server.response.setStatusOverSendError", true));
+        // FIXME: This makes Spring Web stop working
+        // setProperties(Collections.singletonMap("jersey.config.server.response.setStatusOverSendError",
+        // true));
 
         // register(HelloWorldResource.class);
-        // packages("com.example.wstutorial.resource");
+        packages("com.example.wstutorial.resource");
     }
 
 }
