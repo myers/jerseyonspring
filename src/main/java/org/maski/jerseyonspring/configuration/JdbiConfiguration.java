@@ -1,4 +1,4 @@
-package com.example.wstutorial.configuration;
+package org.maski.jerseyonspring.configuration;
 
 import java.util.List;
 import javax.sql.DataSource;

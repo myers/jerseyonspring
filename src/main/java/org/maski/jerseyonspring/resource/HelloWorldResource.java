@@ -1,27 +1,37 @@
-package com.example.wstutorial.resource;
+package org.maski.jerseyonspring.resource;
 
 import java.util.List;
 
-import com.example.wstutorial.dao.EmployeeDao;
-import com.example.wstutorial.entity.Employee;
+import org.maski.jerseyonspring.dao.EmployeeDao;
+import org.maski.jerseyonspring.entity.Employee;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import lombok.Builder;
+import lombok.Data;
 
 @Path("/hello")
 public class HelloWorldResource {
+
+    @Builder
+    @Data
+    static class EmployeeResponse {
+        private Integer sessionCounter;
+        private List<Employee> data;
+    }
 
     @Inject
     EmployeeDao employeeDao;
 
     @GET
     @Produces("application/json")
-    public List<Employee> hello(HttpSession session) {
+    public EmployeeResponse hello(HttpSession session) {
+        Integer counter = null;
         if (session != null) {
-            Integer counter = (Integer) session.getAttribute("count");
+            counter = (Integer) session.getAttribute("count");
 
             if (counter == null) {
                 counter = 1;
@@ -35,6 +45,6 @@ public class HelloWorldResource {
             System.out.println("no session");
         }
 
-        return employeeDao.selectAll();
+        return EmployeeResponse.builder().data(employeeDao.selectAll()).sessionCounter(counter).build();
     }
 }

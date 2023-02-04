@@ -1,4 +1,4 @@
-package com.example.wstutorial.dao;
+package org.maski.jerseyonspring.dao;
 
 import java.util.List;
 

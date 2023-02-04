@@ -1,4 +1,4 @@
-package com.example.wstutorial.configuration;
+package org.maski.jerseyonspring.configuration;
 
 import java.util.Collections;
 
@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 public class JerseyConfiguration extends ResourceConfig {
 
     public JerseyConfiguration() {
-        // Allow Jersey to work alongside Spring Web
+        packages("org.maski.jerseyonspring.resource");
+
+        // Allow Jersey to work alongside Spring MVC
+        // https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.jersey.alongside-another-web-framework
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
 
         // Allow Jersey work with Spring Security
@@ -20,7 +23,6 @@ public class JerseyConfiguration extends ResourceConfig {
         // true));
 
         // register(HelloWorldResource.class);
-        packages("com.example.wstutorial.resource");
     }
 
 }

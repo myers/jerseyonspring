@@ -18,6 +18,6 @@ spring:
     username: crowdstreet
     password: crowdstreet
   
-  # Allow Jersey to work alongside Spring Web
+  # Allow Jersey to work alongside Spring MVC
   jersey:
     type: filter

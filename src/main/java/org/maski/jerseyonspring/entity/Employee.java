@@ -1,4 +1,4 @@
-package com.example.wstutorial.entity;
+package org.maski.jerseyonspring.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

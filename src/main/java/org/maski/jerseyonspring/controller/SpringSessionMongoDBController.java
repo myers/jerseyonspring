@@ -1,4 +1,4 @@
-package com.example.wstutorial.controller;
+package org.maski.jerseyonspring.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
