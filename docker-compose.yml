@@ -9,5 +9,16 @@ services:
       - "5432:5432"
     volumes:
       - "postgres:/var/lib/postgresql/data"
+
+  mongo:
+    image: mongo:6.0.4
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: crowdstreet
+      MONGO_INITDB_ROOT_PASSWORD: crowdstreet
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/data/db
 volumes:
   postgres:
+  mongo:
