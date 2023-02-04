@@ -1,12 +1,12 @@
 package com.example.wstutorial.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpSession;
 
-@Controller
+@RestController
 public class SpringSessionMongoDBController {
 
     @GetMapping("/")

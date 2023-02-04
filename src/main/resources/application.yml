@@ -1,6 +1,10 @@
 spring:
+  session:
+    store-type: "mongodb"
+
   flyway:
     baseline-on-migrate: true
+
   data:
     mongodb:
       host: "localhost"
@@ -8,9 +12,12 @@ spring:
       database: crowdstreet
       username: crowdstreet
       password: crowdstreet
+
   datasource:
     url: "jdbc:postgresql://localhost:5432/crowdstreet"
     username: crowdstreet
     password: crowdstreet
-  session:
-    store-type: "mongodb"
+  
+  # Allow Jersey to work alongside Spring Web
+  jersey:
+    type: filter
