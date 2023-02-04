@@ -1,5 +1,5 @@
 db.createUser({
-    user: "crowdstreet",
-    pwd: "crowdstreet",
+    user: "jerseyonspring",
+    pwd: "jerseyonspring",
     roles: ["readWrite"]
 });

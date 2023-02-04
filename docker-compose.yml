@@ -1,10 +1,10 @@
 version: "3.9"
 services:
   postgres:
-    image: "postgres:13"
+    image: postgres:13
     environment:
-      POSTGRES_USER: crowdstreet
-      POSTGRES_PASSWORD: crowdstreet
+      POSTGRES_USER: jerseyonspring
+      POSTGRES_PASSWORD: jerseyonspring
     ports:
       - "5432:5432"
     volumes:
@@ -13,9 +13,9 @@ services:
   mongo:
     image: mongo:6.0.4
     environment:
-      MONGO_INITDB_ROOT_USERNAME: crowdstreet
-      MONGO_INITDB_ROOT_PASSWORD: crowdstreet
-      MONGO_INITDB_DATABASE: crowdstreet
+      MONGO_INITDB_ROOT_USERNAME: jerseyonspring
+      MONGO_INITDB_ROOT_PASSWORD: jerseyonspring
+      MONGO_INITDB_DATABASE: jerseyonspring
     ports:
       - "27017:27017"
     volumes:

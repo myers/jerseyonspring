@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
-import com.example.wstutorial.dao.EmployeeDao;
+import org.maski.jerseyonspring.dao.EmployeeDao;
 
 @Configuration
 public class JdbiConfiguration {

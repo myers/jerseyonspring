@@ -9,14 +9,14 @@ spring:
     mongodb:
       host: "localhost"
       port: 27017
-      database: crowdstreet
-      username: crowdstreet
-      password: crowdstreet
+      database: jerseyonspring
+      username: jerseyonspring
+      password: jerseyonspring
 
   datasource:
-    url: "jdbc:postgresql://localhost:5432/crowdstreet"
-    username: crowdstreet
-    password: crowdstreet
+    url: "jdbc:postgresql://localhost:5432/jerseyonspring"
+    username: jerseyonspring
+    password: jerseyonspring
   
   # Allow Jersey to work alongside Spring MVC
   jersey:
