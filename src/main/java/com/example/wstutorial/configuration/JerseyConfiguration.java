@@ -4,9 +4,9 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JerseyConfig extends ResourceConfig {
+public class JerseyConfiguration extends ResourceConfig {
 
-    public JerseyConfig() {
+    public JerseyConfiguration() {
         packages("com.example.wstutorial.resource");
         // register(HelloWorldResource.class);
     }
