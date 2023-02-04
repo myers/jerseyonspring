@@ -6,10 +6,12 @@ import org.maski.jerseyonspring.dao.EmployeeDao;
 import org.maski.jerseyonspring.entity.Employee;
 
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
 import lombok.Builder;
 import lombok.Data;
 
@@ -28,7 +30,8 @@ public class HelloWorldResource {
 
     @GET
     @Produces("application/json")
-    public EmployeeResponse hello(HttpSession session) {
+    public EmployeeResponse hello(@Context HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
         Integer counter = null;
         if (session != null) {
             counter = (Integer) session.getAttribute("count");
